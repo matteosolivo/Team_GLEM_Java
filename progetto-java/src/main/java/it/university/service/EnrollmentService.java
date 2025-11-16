@@ -7,12 +7,16 @@ import java.util.List;
 public class EnrollmentService {
     private EnrollmentRepository repo = new EnrollmentRepository();
 
-    public void enrollStudent(Enrollment e) { repo.save(e); }
+    public void enrollStudent(Enrollment e) {
+        repo.save(e);
+    }
+    
     public List<Enrollment> list() { 
-        if (repo.findAll().isEmpty()){
+        if (repo.returnAll().isEmpty()){
             System.out.println("Nessuna iscrizione trovata");
         }
-        return repo.findAll(); 
+        return repo.returnAll(); 
     }
+    
     public boolean isEnrolled(int studentId, int courseId) { return repo.exists(studentId, courseId); }
 }

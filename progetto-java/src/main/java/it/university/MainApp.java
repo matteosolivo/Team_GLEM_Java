@@ -4,6 +4,7 @@ import it.university.model.*;
 import it.university.service.*;
 
 public class MainApp {
+
     public static void main(String[] args) {
         StudentService studentService = new StudentService();
         ProfessorService professorService = new ProfessorService();

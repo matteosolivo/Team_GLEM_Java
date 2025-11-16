@@ -1,19 +1,25 @@
 package it.university.model;
 
 public class Enrollment {
-    private int studentId;
-    private int courseId;
+    
+    private Student student;
+    private Course course;
 
-    public Enrollment(int studentId, int courseId) {
-        this.studentId = studentId;
-        this.courseId = courseId;
+    public Enrollment(Student s, Course c) {
+        this.student = s;
+        this.course = c;
     }
 
-    public int getStudentId() { return studentId; }
-    public int getCourseId() { return courseId; }
+    public Student getStudent() {
+        return student;
+    }
+    
+    public Course getCourseId() {
+        return course;
+    }
 
     @Override
     public String toString() {
-        return "Enrollment{student=" + studentId + ", course=" + courseId + "}";
+        return "Iscrizione\n{Studente: " + student.getName() + ", corso di studi: " + course.getName() + "}";
     }
 }

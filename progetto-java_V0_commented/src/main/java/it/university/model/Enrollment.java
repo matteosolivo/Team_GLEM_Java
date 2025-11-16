@@ -1,5 +1,7 @@
 package it.university.model;
 
+//L'iscrizione è composta dall'Id dello studente e dall'Id del corso di studi
+
 public class Enrollment {
     private int studentId;
     private int courseId;

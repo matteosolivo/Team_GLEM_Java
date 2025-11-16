@@ -15,6 +15,11 @@ import it.university.service.StudentService;
 
 public class MainApp {
     public static void main(String[] args) {
+
+        /*Nella prima parte del main vengono attivati i "service" tramite il quale si può accedere
+        a diverse funzionalità
+         */
+        
         StudentService studentService = new StudentService();
         ProfessorService professorService = new ProfessorService();
         CourseService courseService = new CourseService();
@@ -22,6 +27,8 @@ public class MainApp {
         EnrollmentService enrollmentService = new EnrollmentService();
         GradeService gradeService = new GradeService();
         
+        //inserimento e stampa con studentService
+
         System.out.println("Studenti:");
         studentService.list().forEach(System.out::println);
 
@@ -31,6 +38,7 @@ public class MainApp {
         System.out.println("Studenti:");
         studentService.list().forEach(System.out::println);
 
+        //inserimento e stampa con professorService
 
         System.out.println("\nProfessori:");
         professorService.list().forEach(System.out::println);
@@ -40,6 +48,7 @@ public class MainApp {
         System.out.println("\nProfessori:");
         professorService.list().forEach(System.out::println);
 
+        //inserimento e stampa con courseService
 
         System.out.println("\nCorsi:");
         courseService.list().forEach(System.out::println);
@@ -51,6 +60,7 @@ public class MainApp {
         System.out.println("\nCorsi:");
         courseService.list().forEach(System.out::println);
 
+        //inserimento e stampa con classroomService
 
         System.out.println("\nAule:");
         classroomService.list().forEach(System.out::println);
@@ -60,6 +70,7 @@ public class MainApp {
         System.out.println("\nAule:");
         classroomService.list().forEach(System.out::println);
 
+        //inserimento e stampa con enrollmentService
 
         System.out.println("\nIscrizioni:");
         enrollmentService.list().forEach(System.out::println);
@@ -70,7 +81,7 @@ public class MainApp {
         System.out.println("\nIscrizioni:");
         enrollmentService.list().forEach(System.out::println);
 
-
+        //inserimento e stampa con gradeService
 
         System.out.println("\nVoti:");
         gradeService.list().forEach(System.out::println);

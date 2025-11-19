@@ -1,5 +1,7 @@
 package it.university;
 
+//Qui ci sono gli import
+
 import it.university.model.Classroom;
 import it.university.model.Course;
 import it.university.model.Enrollment;

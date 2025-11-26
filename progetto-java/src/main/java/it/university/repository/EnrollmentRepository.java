@@ -9,10 +9,14 @@ public class EnrollmentRepository implements ICollectionRepository<Enrollment>{
     private final List<Enrollment> enrollments = new ArrayList<>();
 
     @Override
-    public void save(Enrollment e) { enrollments.add(e); }
+    public void save(Enrollment enrollment) {
+        enrollments.add(enrollment);
+    }
 
     @Override
-    public List<Enrollment> findAll() { return new ArrayList<>(enrollments); }
+    public List<Enrollment> findAll() {
+        return new ArrayList<>(enrollments);
+    }
 
     public boolean exists(int studentId, int courseId) {
         return enrollments.stream().anyMatch(en -> en.getStudentId() == studentId && en.getCourseId() == courseId);

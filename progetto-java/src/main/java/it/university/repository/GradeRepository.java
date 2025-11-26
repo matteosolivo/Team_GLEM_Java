@@ -9,7 +9,7 @@ public class GradeRepository implements ICollectionRepository<Grade>{
     private final List<Grade> grades = new ArrayList<>();
 
     @Override
-    public void save(Grade g) { grades.add(g); }
+    public void save(Grade grade) { grades.add(grade); }
     
     @Override
     public List<Grade> findAll() { return new ArrayList<>(grades); }

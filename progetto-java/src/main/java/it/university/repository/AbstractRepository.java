@@ -10,11 +10,11 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
 
     protected final Map<ID, T> storage = new HashMap<>();
 
-    protected abstract ID extractId(T entity);
+    protected abstract ID extractId(T var);
 
     @Override
-    public void save(T entity) {
-        storage.put(extractId(entity), entity);
+    public void save(T var) {
+        storage.put(extractId(var), var);
     }
 
     @Override
@@ -25,10 +25,5 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
     @Override
     public List<T> findAll() {
         return new ArrayList<>(storage.values());
-    }
-
-    @Override
-    public void deleteById(ID id) {
-        storage.remove(id);
     }
 }

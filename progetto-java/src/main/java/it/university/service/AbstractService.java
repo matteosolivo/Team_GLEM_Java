@@ -13,8 +13,8 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
     }
 
     @Override
-    public void save(T entity) {
-        repository.save(entity);
+    public void save(T var) {
+        repository.save(var);
     }
 
     @Override

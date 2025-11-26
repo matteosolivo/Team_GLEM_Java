@@ -92,3 +92,12 @@ public class MainApp {
         gradeService.list().forEach(System.out::println);
     }
 }
+
+/*
+DA IMPLEMENTARE NEL FUTURO:
+- Gestione delle eccezioni (Luca)
+- Classi astratte e interfacce per i models (Giovanna)
+- Validazioni sui dati duplicati o non validi forse gestire Grade ed Enroll (Matteo)
+- Pattern di sicurezza come singleton (Elisabetta)
+- Persistenza dei dati su file esterni in JSON (Matteo)
+*/

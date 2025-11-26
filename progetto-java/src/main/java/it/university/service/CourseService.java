@@ -1,18 +1,38 @@
 package it.university.service;
 
-import it.university.model.Course;
-import it.university.repository.CourseRepository;
 import java.util.List;
 
-public class CourseService {
-    private CourseRepository repo = new CourseRepository();
+import it.university.model.Course;
+import it.university.repository.IRepository;
 
-    public void createCourse(Course c) { repo.save(c); }
-    public void assignProfessor(Course c, int professorId) { c.setProfessorId(professorId); }
-    public List<Course> list() { 
-        if (repo.findAll().isEmpty()){
+public class CourseService extends AbstractService<Course, Integer> {
+
+    public CourseService(IRepository<Course, Integer> repository) {
+        super(repository);
+    }
+
+    public void createCourse(Course course) {
+        save(course);
+    }
+
+    public void assignProfessor(int courseId, int professorId) {
+        Course course = getById(courseId);
+        
+        if (course != null) {
+            course.setProfessorId(professorId);
+            repository.save(course);
+        } else {
+            System.out.println("Corso non trovato con id " + courseId);
+        }
+    }
+
+    @Override
+    public List<Course> list() {
+
+        List<Course> coursesList = super.list();
+        if (coursesList.isEmpty()) {
             System.out.println("Nessun corso trovato");
         }
-        return repo.findAll(); 
+        return coursesList;
     }
 }

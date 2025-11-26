@@ -1,11 +1,16 @@
 package it.university.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import it.university.model.Grade;
-import java.util.*;
 
-public class GradeRepository {
-    private List<Grade> grades = new ArrayList<>();
+public class GradeRepository implements ICollectionRepository<Grade>{
+    private final List<Grade> grades = new ArrayList<>();
 
-    public void save(Grade g) { grades.add(g); }
-    public List<Grade> findAll() { return grades; }
+    @Override
+    public void save(Grade grade) { grades.add(grade); }
+    
+    @Override
+    public List<Grade> findAll() { return new ArrayList<>(grades); }
 }

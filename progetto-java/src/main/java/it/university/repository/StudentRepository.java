@@ -1,12 +1,11 @@
 package it.university.repository;
 
 import it.university.model.Student;
-import java.util.*;
 
-public class StudentRepository {
-    private Map<Integer, Student> students = new HashMap<>();
+public class StudentRepository extends AbstractRepository<Student, Integer> {
 
-    public void save(Student s) { students.put(s.getId(), s); }
-    public Student findById(int id) { return students.get(id); }
-    public List<Student> findAll() { return new ArrayList<>(students.values()); }
+    @Override
+    protected Integer extractId(Student student) {
+        return student.getId();
+    }
 }

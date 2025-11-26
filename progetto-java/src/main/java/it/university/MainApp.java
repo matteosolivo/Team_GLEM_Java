@@ -1,16 +1,40 @@
 package it.university;
 
-import it.university.model.*;
-import it.university.service.*;
+import it.university.model.Classroom;
+import it.university.model.Course;
+import it.university.model.Enrollment;
+import it.university.model.Grade;
+import it.university.model.Professor;
+import it.university.model.Student;
+import it.university.repository.ClassroomRepository;
+import it.university.repository.CourseRepository;
+import it.university.repository.EnrollmentRepository;
+import it.university.repository.GradeRepository;
+import it.university.repository.ProfessorRepository;
+import it.university.repository.StudentRepository;
+import it.university.service.ClassroomService;
+import it.university.service.CourseService;
+import it.university.service.EnrollmentService;
+import it.university.service.GradeService;
+import it.university.service.ProfessorService;
+import it.university.service.StudentService;
 
 public class MainApp {
     public static void main(String[] args) {
-        StudentService studentService = new StudentService();
-        ProfessorService professorService = new ProfessorService();
-        CourseService courseService = new CourseService();
-        ClassroomService classroomService = new ClassroomService();
-        EnrollmentService enrollmentService = new EnrollmentService();
-        GradeService gradeService = new GradeService();
+
+        StudentRepository studentRepository = new StudentRepository();
+        ProfessorRepository professorRepository = new ProfessorRepository();
+        CourseRepository courseRepository = new CourseRepository();
+        ClassroomRepository classroomRepository = new ClassroomRepository();
+        EnrollmentRepository enrollmentRepository = new EnrollmentRepository();
+        GradeRepository gradeRepository = new GradeRepository();
+        
+        StudentService studentService = new StudentService(studentRepository);
+        ProfessorService professorService = new ProfessorService(professorRepository);
+        CourseService courseService = new CourseService(courseRepository);
+        ClassroomService classroomService = new ClassroomService(classroomRepository);
+        EnrollmentService enrollmentService = new EnrollmentService(enrollmentRepository);
+        GradeService gradeService = new GradeService(gradeRepository);
         
         System.out.println("Studenti:");
         studentService.list().forEach(System.out::println);
@@ -34,7 +58,7 @@ public class MainApp {
 
         courseService.createCourse(new Course(1, "Programmazione", 9));
         courseService.createCourse(new Course(2, "Basi di Dati", 6));
-        courseService.assignProfessor(courseService.list().get(0), 1);
+        courseService.assignProfessor(1, 1);
 
         System.out.println("\nCorsi:");
         courseService.list().forEach(System.out::println);
@@ -66,9 +90,5 @@ public class MainApp {
 
         System.out.println("\nVoti:");
         gradeService.list().forEach(System.out::println);
-
-
-        
-
     }
 }

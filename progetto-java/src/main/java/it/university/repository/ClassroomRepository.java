@@ -1,12 +1,11 @@
 package it.university.repository;
 
 import it.university.model.Classroom;
-import java.util.*;
 
-public class ClassroomRepository {
-    private Map<String, Classroom> data = new HashMap<>();
+public class ClassroomRepository extends AbstractRepository<Classroom, String> {
 
-    public void save(Classroom c) { data.put(c.getCode(), c); }
-    public Classroom findByCode(String code) { return data.get(code); }
-    public List<Classroom> findAll() { return new ArrayList<>(data.values()); }
+    @Override
+    protected String extractId(Classroom classroom) {
+        return classroom.getCode();
+    }
 }

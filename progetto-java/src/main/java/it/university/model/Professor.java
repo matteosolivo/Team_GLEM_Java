@@ -1,8 +1,6 @@
 package it.university.model;
 
-public class Professor {
-    private int id;
-    private String name;
+public class Professor extends Item{
     private String department;
 
     public Professor(int id, String name, String department) {
@@ -11,8 +9,6 @@ public class Professor {
         this.department = department;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
     public String getDepartment() { return department; }
 
     @Override

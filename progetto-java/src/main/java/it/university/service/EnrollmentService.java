@@ -7,10 +7,19 @@ import it.university.repository.EnrollmentRepository;
 
 public class EnrollmentService {
 
-    private final EnrollmentRepository enrollmentRepository;
-
-    public EnrollmentService(EnrollmentRepository enrollmentRepository) {
+	private static EnrollmentService istance;
+	
+    private static EnrollmentRepository enrollmentRepository;
+    
+    private EnrollmentService(EnrollmentRepository enrollmentRepository) {
         this.enrollmentRepository = enrollmentRepository;
+    }
+    
+    public static EnrollmentService getIstance(EnrollmentRepository enrollmentRepository) {
+    	if(istance == null) {
+    		istance = new EnrollmentService(enrollmentRepository);
+    	}
+    	return istance;
     }
 
     public void enrollStudent(Enrollment enrollment) {

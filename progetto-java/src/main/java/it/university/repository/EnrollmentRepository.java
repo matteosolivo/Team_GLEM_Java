@@ -6,8 +6,22 @@ import java.util.List;
 import it.university.model.Enrollment;
 
 public class EnrollmentRepository implements ICollectionRepository<Enrollment>{
+	
+	private static EnrollmentRepository istance;
+	
     private final List<Enrollment> enrollments = new ArrayList<>();
 
+    private EnrollmentRepository() {
+    	System.out.println("Enrollment Repository creato");
+    }
+    
+    public static EnrollmentRepository getIstance() {
+    	if(istance == null) {
+    		istance = new EnrollmentRepository();
+    	}
+    	return istance;
+    }
+    
     @Override
     public void save(Enrollment enrollment) {
         enrollments.add(enrollment);

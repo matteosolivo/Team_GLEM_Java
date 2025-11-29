@@ -6,9 +6,19 @@ import it.university.model.Student;
 import it.university.repository.IRepository;
 
 public class StudentService extends AbstractService<Student, Integer> {
-    public StudentService(IRepository<Student, Integer> studentRepository) {
+    
+	private static StudentService istance;
+	
+	private StudentService(IRepository<Student, Integer> studentRepository) {
         super(studentRepository);
     }
+	
+	public static StudentService getIstance(IRepository<Student, Integer> studentRepository) {
+		if(istance == null) {
+			istance = new StudentService(studentRepository);
+		}
+		return istance;
+	}
 
     public void registerStudent(Student student) { save(student); }
 

@@ -7,7 +7,9 @@ import it.university.repository.IRepository;
 
 public class CourseService extends AbstractService<Course, Integer> {
 
-    public CourseService(IRepository<Course, Integer> repository) {
+    private static CourseService istance;
+	
+	private CourseService(IRepository<Course, Integer> repository) {
         super(repository);
     }
 
@@ -15,6 +17,13 @@ public class CourseService extends AbstractService<Course, Integer> {
         save(course);
     }
 
+    public static CourseService getIstance(IRepository<Course, Integer> repository) {
+    	if(istance == null) {
+    		istance = new CourseService(repository);
+    	}
+    	return istance;
+    }
+    
     public void assignProfessor(int courseId, int professorId) {
         Course course = getById(courseId);
         

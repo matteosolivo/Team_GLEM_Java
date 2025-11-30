@@ -22,19 +22,19 @@ import it.university.service.StudentService;
 public class MainApp {
     public static void main(String[] args) {
 
-        StudentRepository studentRepository = new StudentRepository();
-        ProfessorRepository professorRepository = new ProfessorRepository();
-        CourseRepository courseRepository = new CourseRepository();
-        ClassroomRepository classroomRepository = new ClassroomRepository();
-        EnrollmentRepository enrollmentRepository = new EnrollmentRepository();
-        GradeRepository gradeRepository = new GradeRepository();
+        StudentRepository studentRepository = StudentRepository.getIstance();
+        ProfessorRepository professorRepository = ProfessorRepository.getIstance();
+        CourseRepository courseRepository = CourseRepository.getIstance();
+        ClassroomRepository classroomRepository = ClassroomRepository.getIstance();
+        EnrollmentRepository enrollmentRepository = EnrollmentRepository.getIstance();
+        GradeRepository gradeRepository = GradeRepository.getIstance();
         
-        StudentService studentService = new StudentService(studentRepository);
-        ProfessorService professorService = new ProfessorService(professorRepository);
-        CourseService courseService = new CourseService(courseRepository);
-        ClassroomService classroomService = new ClassroomService(classroomRepository);
-        EnrollmentService enrollmentService = new EnrollmentService(enrollmentRepository);
-        GradeService gradeService = new GradeService(gradeRepository);
+        StudentService studentService = StudentService.getIstance(studentRepository);
+        ProfessorService professorService = ProfessorService.getIstance(professorRepository);
+        CourseService courseService = CourseService.getIstance(courseRepository);
+        ClassroomService classroomService = ClassroomService.getIstance(classroomRepository);
+        EnrollmentService enrollmentService = EnrollmentService.getIstance(enrollmentRepository);
+        GradeService gradeService = GradeService.getIstance(gradeRepository);
         
         System.out.println("Studenti:");
         studentService.list().forEach(System.out::println);

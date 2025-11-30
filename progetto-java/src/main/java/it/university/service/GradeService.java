@@ -7,12 +7,21 @@ import it.university.repository.GradeRepository;
 
 public class GradeService {
 
+	private static GradeService istance;
+	
     private final GradeRepository gradeRepository;
 
-    public GradeService(GradeRepository gradeRepository) {
+    private GradeService(GradeRepository gradeRepository) {
         this.gradeRepository = gradeRepository;
     }
 
+    public static GradeService getIstance(GradeRepository gradeRepository) {
+    	if(istance == null) {
+    		istance = new GradeService(gradeRepository);
+    	}
+    	return istance;
+    }
+    
     public void add(Grade grade) {
         gradeRepository.save(grade);
     }

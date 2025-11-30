@@ -1,8 +1,6 @@
 package it.university.model;
 
-public class Student {
-    private int id;
-    private String name;
+public class Student extends Item {
     private String email;
 
     public Student(int id, String name, String email) {
@@ -11,8 +9,6 @@ public class Student {
         this.email = email;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
     public String getEmail() { return email; }
 
     @Override

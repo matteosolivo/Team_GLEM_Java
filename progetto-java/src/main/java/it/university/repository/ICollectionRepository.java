@@ -9,12 +9,12 @@ import it.university.model.CollectionItem;
 public interface ICollectionRepository<T extends CollectionItem> {
 
     void save(T var);
+    
+    boolean exists(Integer studentId, Integer courseId);
 
     T findById(Integer studentId, Integer courseId);
 
     List<T> findAll();
 
     void saveToJson(String filePath) throws Exception;
-    
-    boolean exists(Integer studentId, Integer courseId);
 }

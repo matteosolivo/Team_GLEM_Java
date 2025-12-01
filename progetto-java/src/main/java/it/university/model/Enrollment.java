@@ -1,10 +1,9 @@
 package it.university.model;
 
-public class Enrollment extends DerivedItem{
-   
+public class Enrollment extends CollectionItem {
+
     public Enrollment(Integer studentId, Integer courseId) {
-        this.studentId = studentId;
-        this.courseId = courseId;
+        super(studentId, courseId);
     }
 
     @Override

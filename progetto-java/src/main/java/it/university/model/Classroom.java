@@ -1,6 +1,7 @@
 package it.university.model;
 
 public class Classroom {
+
     private String code;
     private int capacity;
 
@@ -9,8 +10,23 @@ public class Classroom {
         this.capacity = capacity;
     }
 
-    public String getCode() { return code; }
-    public int getCapacity() { return capacity; }
+    // GETTERS
+    public String getCode() {
+        return code;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    // SETTERS
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 
     @Override
     public String toString() {

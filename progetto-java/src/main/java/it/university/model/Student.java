@@ -1,15 +1,23 @@
 package it.university.model;
 
 public class Student extends Item {
+
     private String email;
 
     public Student(int id, String name, String email) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         this.email = email;
     }
 
-    public String getEmail() { return email; }
+    // GETTERS
+    public String getEmail() {
+        return email;
+    }
+
+    // SETTERS
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {

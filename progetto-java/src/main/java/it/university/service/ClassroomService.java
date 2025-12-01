@@ -7,31 +7,26 @@ import it.university.repository.IRepository;
 
 public class ClassroomService extends AbstractService<Classroom, String> {
 
-	private static ClassroomService istance;
-	
-	//Private così solo tramite ClassroomService è possibile ottenere un'istanza del service
-    private ClassroomService(IRepository<Classroom, String> classroomRepository) {
-        super(classroomRepository);
-    }
-    
-    public static ClassroomService getIstance(IRepository<Classroom, String> classroomRepository) {
-    	if(istance == null) {
-    		istance = new ClassroomService(classroomRepository);
-    	}
-    	return istance;
-    }
-    
-    public void add(Classroom classroom) {
-        save(classroom);
+    private static ClassroomService istance;
+
+    //Private così solo tramite ClassroomService è possibile ottenere un'istanza del service
+    private ClassroomService(IRepository<Classroom, String> repository) {
+        super(repository);
     }
 
-    @Override
+    public static ClassroomService getIstance(IRepository<Classroom, String> classroomRepository) {
+        if (istance == null) {
+            istance = new ClassroomService(classroomRepository);
+        }
+        return istance;
+    }
+
+   @Override
     public List<Classroom> list() {
-        List<Classroom> classroomsList = super.list();
-        
-        if (classroomsList.isEmpty()) {
+        List<Classroom> list = super.list();
+        if (list.isEmpty()){
             System.out.println("Nessuna aula presente");
         }
-        return classroomsList;
+        return list;
     }
 }

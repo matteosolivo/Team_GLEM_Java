@@ -10,6 +10,8 @@ import it.university.repository.ClassroomRepository;
 import it.university.repository.CourseRepository;
 import it.university.repository.EnrollmentRepository;
 import it.university.repository.GradeRepository;
+import it.university.repository.ICollectionRepository;
+import it.university.repository.IRepository;
 import it.university.repository.ProfessorRepository;
 import it.university.repository.StudentRepository;
 import it.university.service.ClassroomService;
@@ -20,14 +22,14 @@ import it.university.service.ProfessorService;
 import it.university.service.StudentService;
 
 public class MainApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        StudentRepository studentRepository = StudentRepository.getIstance();
-        ProfessorRepository professorRepository = ProfessorRepository.getIstance();
-        CourseRepository courseRepository = CourseRepository.getIstance();
-        ClassroomRepository classroomRepository = ClassroomRepository.getIstance();
-        EnrollmentRepository enrollmentRepository = EnrollmentRepository.getIstance();
-        GradeRepository gradeRepository = GradeRepository.getIstance();
+        IRepository<Student, Integer> studentRepository = new StudentRepository();
+        IRepository<Professor, Integer> professorRepository = new ProfessorRepository();
+        IRepository<Course, Integer> courseRepository = new CourseRepository();
+        IRepository<Classroom, String> classroomRepository = new ClassroomRepository();
+        ICollectionRepository<Enrollment> enrollmentRepository = new EnrollmentRepository();
+        ICollectionRepository<Grade> gradeRepository = new GradeRepository();
         
         StudentService studentService = StudentService.getIstance(studentRepository);
         ProfessorService professorService = ProfessorService.getIstance(professorRepository);
@@ -42,13 +44,15 @@ public class MainApp {
         studentService.registerStudent(new Student(1, "Alice", "alice@mail.com"));
         studentService.registerStudent(new Student(2, "Bob", "bob@mail.com"));
         
-        System.out.println("Studenti:");
+        System.out.println("\nStudenti:");
         studentService.list().forEach(System.out::println);
 
+        
         System.out.println("\nProfessori:");
         professorService.list().forEach(System.out::println);
 
         professorService.add(new Professor(1, "Dr. Rossi", "Informatica"));
+
         System.out.println("\nProfessori:");
         professorService.list().forEach(System.out::println);
 
@@ -63,14 +67,15 @@ public class MainApp {
         System.out.println("\nCorsi:");
         courseService.list().forEach(System.out::println);
 
-        System.out.println("\nAule:");
-        classroomService.list().forEach(System.out::println);
-
-
-        classroomService.add(new Classroom("A101", 30));
 
         System.out.println("\nAule:");
         classroomService.list().forEach(System.out::println);
+
+        classroomService.save(new Classroom("A101", 30));
+
+        System.out.println("\nAule:");
+        classroomService.list().forEach(System.out::println);
+
 
         System.out.println("\nIscrizioni:");
         enrollmentService.list().forEach(System.out::println);
@@ -82,7 +87,6 @@ public class MainApp {
         enrollmentService.list().forEach(System.out::println);
 
 
-
         System.out.println("\nVoti:");
         gradeService.list().forEach(System.out::println);
 
@@ -90,14 +94,16 @@ public class MainApp {
 
         System.out.println("\nVoti:");
         gradeService.list().forEach(System.out::println);
+
+
+        // SALVATAGGIO DATI SU FILE JSON
+        String path = "src\\main\\java\\it\\university\\download\\";
+        studentService.saveToJson(path + "students.json");
+        professorService.saveToJson(path + "professors.json");
+        courseService.saveToJson(path + "courses.json");
+        classroomService.saveToJson(path + "classrooms.json");
+        enrollmentService.saveToJson(path + "enrollments.json");
+        gradeService.saveToJson(path + "grades.json");
+
     }
 }
-
-/*
-DA IMPLEMENTARE NEL FUTURO:
-- Gestione delle eccezioni (Luca)
-- Classi astratte e interfacce per i models (Giovanna)
-- Validazioni sui dati duplicati o non validi forse gestire Grade ed Enroll (Matteo)
-- Pattern di sicurezza come singleton (Elisabetta)
-- Persistenza dei dati su file esterni in JSON (Matteo)
-*/

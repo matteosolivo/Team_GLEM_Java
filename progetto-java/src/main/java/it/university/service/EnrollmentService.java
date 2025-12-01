@@ -1,41 +1,25 @@
 package it.university.service;
 
-import java.util.List;
-
 import it.university.model.Enrollment;
-import it.university.repository.EnrollmentRepository;
+import it.university.repository.ICollectionRepository;
 
-public class EnrollmentService {
+public class EnrollmentService extends AbstractCollectionService<Enrollment> {
 
-	private static EnrollmentService istance;
-	
-    private static EnrollmentRepository enrollmentRepository;
-    
-    private EnrollmentService(EnrollmentRepository enrollmentRepository) {
-        this.enrollmentRepository = enrollmentRepository;
-    }
-    
-    public static EnrollmentService getIstance(EnrollmentRepository enrollmentRepository) {
-    	if(istance == null) {
-    		istance = new EnrollmentService(enrollmentRepository);
-    	}
-    	return istance;
+    private static EnrollmentService istance;
+
+    private EnrollmentService(ICollectionRepository<Enrollment> repository) {
+        super(repository);
     }
 
-    public void enrollStudent(Enrollment enrollment) {
-        enrollmentRepository.save(enrollment);
-    }
-
-    public List<Enrollment> list() { 
-        List<Enrollment> enrollmentsList = enrollmentRepository.findAll();
-
-        if (enrollmentsList.isEmpty()) {
-            System.out.println("Nessuna iscrizione presente");
+    public static EnrollmentService getIstance(ICollectionRepository<Enrollment> repository) {
+        if (istance == null) {
+            istance = new EnrollmentService(repository);
         }
-        return enrollmentsList;
+        return istance;
     }
 
-    public boolean isEnrolled(int studentId, int courseId) {
-        return enrollmentRepository.exists(studentId, courseId);
+    // METODO USATO PERCHE MAIN USA QUESTA FIRMA E NON QUELLA DI AbstractCollectionService.java
+    public void enrollStudent(Enrollment enrollment) {
+        add(enrollment);
     }
 }

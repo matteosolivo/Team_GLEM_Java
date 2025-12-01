@@ -1,15 +1,23 @@
 package it.university.model;
 
-public class Professor extends Item{
+public class Professor extends Item {
+
     private String department;
 
     public Professor(int id, String name, String department) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         this.department = department;
     }
 
-    public String getDepartment() { return department; }
+    // GETTERS
+    public String getDepartment() {
+        return department;
+    }
+
+    // SETTERS
+    public void setEmail(String department) {
+        this.department = department;
+    }
 
     @Override
     public String toString() {

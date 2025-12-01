@@ -2,24 +2,10 @@ package it.university.repository;
 
 import it.university.model.Course;
 
-public class CourseRepository extends AbstractRepository<Course, Integer> {
+public class CourseRepository extends AbstractRepository<Course> {
 
-	private static CourseRepository istance;
-	
-	private CourseRepository() {
-		System.out.println("Course Repository creato");
-	}
-	
-	public static CourseRepository getIstance() {
-		if(istance == null) {
-			istance = new CourseRepository();
-		}
-		return istance;
-	}
-	
     @Override
-    protected Integer extractId(Course course) {
+    public int getItemId(Course course) {
         return course.getId();
     }
 }
-

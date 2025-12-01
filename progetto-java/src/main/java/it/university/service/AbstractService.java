@@ -1,14 +1,17 @@
 package it.university.service;
 
+import java.io.IOException;
 import java.util.List;
 
+import it.university.model.Item;
 import it.university.repository.IRepository;
 
-public abstract class AbstractService<T, ID> implements IService<T, ID> {
+// T extends Item --> TYPE SAFETY
+public abstract class AbstractService<T extends Item> implements IService<T> {
 
-    protected final IRepository<T, ID> repository;
+    protected final IRepository<T> repository;
 
-    public AbstractService(IRepository<T, ID> repository) {
+    protected AbstractService(IRepository<T> repository) {
         this.repository = repository;
     }
 
@@ -18,12 +21,21 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
     }
 
     @Override
-    public T getById(ID id) {
+    public T getById(int id) {
         return repository.findById(id);
     }
 
     @Override
     public List<T> list() {
         return repository.findAll();
+    }
+
+    @Override
+    public void saveToJson(String path) throws Exception {
+        try {
+            repository.saveToJson(path);
+        } catch (IOException e) {
+            System.out.println("Errore durante il salvataggio dei dati: " + e.getMessage());
+        }
     }
 }

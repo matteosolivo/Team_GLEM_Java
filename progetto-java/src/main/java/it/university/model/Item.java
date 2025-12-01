@@ -1,9 +1,30 @@
 package it.university.model;
 
-abstract class Item {
-    protected Integer id;
+public abstract class Item {
+
+    protected int id;
     protected String name;
 
-    public Integer getId() { return id; }
-    public String getName() { return name; }
+    public Item(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // GETTERS
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // SETTERS
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

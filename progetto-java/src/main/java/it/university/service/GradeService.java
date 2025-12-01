@@ -1,36 +1,26 @@
 package it.university.service;
 
-import java.util.List;
-
 import it.university.model.Grade;
-import it.university.repository.GradeRepository;
+import it.university.repository.ICollectionRepository;
 
-public class GradeService {
+public class GradeService extends AbstractCollectionService<Grade> {
 
-	private static GradeService istance;
-	
-    private final GradeRepository gradeRepository;
+    private static GradeService istance;
 
-    private GradeService(GradeRepository gradeRepository) {
-        this.gradeRepository = gradeRepository;
+    private GradeService(ICollectionRepository<Grade> repository) {
+        super(repository);
     }
 
-    public static GradeService getIstance(GradeRepository gradeRepository) {
-    	if(istance == null) {
-    		istance = new GradeService(gradeRepository);
-    	}
-    	return istance;
-    }
-    
-    public void add(Grade grade) {
-        gradeRepository.save(grade);
+    public static GradeService getIstance(ICollectionRepository<Grade> repository) {
+        if (istance == null) {
+            istance = new GradeService(repository);
+        }
+        return istance;
     }
 
-    public List<Grade> list() {
-        List<Grade> gradesList = gradeRepository.findAll();
-        if (gradesList.isEmpty()) {
-            System.out.println("Nessun voto registrato");
-        } 
-        return gradesList; 
+    // METODO NON USATO PERCHE MAIN USA QUELLO DI AbstractCollectionService.java
+    public void assignGrade(Grade grade) {
+        add(grade);
     }
+
 }

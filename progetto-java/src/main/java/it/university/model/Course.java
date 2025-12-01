@@ -1,18 +1,32 @@
 package it.university.model;
 
-public class Course extends Item{
-    private Integer credits;
+public class Course extends Item {
+
+    private int credits;
     private Integer professorId; // optional assignment
 
-    public Course(Integer id, String name, Integer credits) {
-        this.id = id;
-        this.name = name;
+    public Course(int id, String name, int credits) {
+        super(id, name);
         this.credits = credits;
     }
 
-    public Integer getCredits() { return credits; }
-    public Integer getProfessorId() { return professorId; }
-    public void setProfessorId(Integer professorId) { this.professorId = professorId; }
+    // GETTERS
+    public int getCredits() {
+        return credits;
+    }
+
+    public Integer getProfessorId() {
+        return professorId;
+    }
+
+    // SETTERS
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    public void setProfessorId(Integer professorId) {
+        this.professorId = professorId;
+    }
 
     @Override
     public String toString() {

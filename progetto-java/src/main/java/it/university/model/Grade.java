@@ -1,19 +1,26 @@
 package it.university.model;
 
-public class Grade extends DerivedItem{
+public class Grade extends CollectionItem {
+
     private int value;
 
     public Grade(int studentId, int courseId, int value) {
-        this.studentId = studentId;
-        this.courseId = courseId;
+        super(studentId, courseId);
         this.value = value;
     }
 
-    public int getValue() { return value; }
+    // GETTERS
+    public int getValue() {
+        return value;
+    }
+
+    // SETTERS
+    public void setValue(int value) {
+        this.value = value;
+    }
 
     @Override
     public String toString() {
         return "Grade{student=" + studentId + ", course=" + courseId + ", value=" + value + "}";
     }
 }
-

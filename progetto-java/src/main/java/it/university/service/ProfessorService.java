@@ -5,19 +5,19 @@ import java.util.List;
 import it.university.model.Professor;
 import it.university.repository.IRepository;
 
-public class ProfessorService extends AbstractService<Professor, Integer> {
+public class ProfessorService extends AbstractService<Professor> {
 
-	private static ProfessorService istance;
-	
-    private ProfessorService(IRepository<Professor, Integer> professorRepository) {
+    private static ProfessorService istance;
+
+    private ProfessorService(IRepository<Professor> professorRepository) {
         super(professorRepository);
     }
-    
-    public static ProfessorService getIstance(IRepository<Professor, Integer> professorRepository) {
-    	if(istance == null) {
-    		istance = new ProfessorService(professorRepository);
-    	}
-    	return istance;
+
+    public static ProfessorService getIstance(IRepository<Professor> professorRepository) {
+        if (istance == null) {
+            istance = new ProfessorService(professorRepository);
+        }
+        return istance;
     }
 
     public void add(Professor professor) {
@@ -27,7 +27,7 @@ public class ProfessorService extends AbstractService<Professor, Integer> {
     @Override
     public List<Professor> list() {
         List<Professor> professorsList = super.list();
-        
+
         if (professorsList.isEmpty()) {
             System.out.println("Nessun professore presente");
         }

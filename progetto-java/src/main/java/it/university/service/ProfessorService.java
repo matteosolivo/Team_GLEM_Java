@@ -5,15 +5,15 @@ import java.util.List;
 import it.university.model.Professor;
 import it.university.repository.IRepository;
 
-public class ProfessorService extends AbstractService<Professor> {
+public class ProfessorService extends AbstractService<Professor, Integer> {
 
     private static ProfessorService istance;
 
-    private ProfessorService(IRepository<Professor> professorRepository) {
+    private ProfessorService(IRepository<Professor, Integer> professorRepository) {
         super(professorRepository);
     }
 
-    public static ProfessorService getIstance(IRepository<Professor> professorRepository) {
+    public static ProfessorService getIstance(IRepository<Professor, Integer> professorRepository) {
         if (istance == null) {
             istance = new ProfessorService(professorRepository);
         }

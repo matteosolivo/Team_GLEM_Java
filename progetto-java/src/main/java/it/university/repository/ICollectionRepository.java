@@ -15,4 +15,6 @@ public interface ICollectionRepository<T extends CollectionItem> {
     List<T> findAll();
 
     void saveToJson(String filePath) throws Exception;
+    
+    boolean exists(Integer studentId, Integer courseId);
 }

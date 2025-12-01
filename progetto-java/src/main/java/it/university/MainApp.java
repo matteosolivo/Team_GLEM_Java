@@ -24,10 +24,10 @@ import it.university.service.StudentService;
 public class MainApp {
     public static void main(String[] args) throws Exception {
 
-        IRepository<Student> studentRepository = new StudentRepository();
-        IRepository<Professor> professorRepository = new ProfessorRepository();
-        IRepository<Course> courseRepository = new CourseRepository();
-        ClassroomRepository classroomRepository = new ClassroomRepository();
+        IRepository<Student, Integer> studentRepository = new StudentRepository();
+        IRepository<Professor, Integer> professorRepository = new ProfessorRepository();
+        IRepository<Course, Integer> courseRepository = new CourseRepository();
+        IRepository<Classroom, String> classroomRepository = new ClassroomRepository();
         ICollectionRepository<Enrollment> enrollmentRepository = new EnrollmentRepository();
         ICollectionRepository<Grade> gradeRepository = new GradeRepository();
         

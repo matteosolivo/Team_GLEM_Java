@@ -9,6 +9,8 @@ public interface ICollectionService<T extends CollectionItem> {
 
     void add(T collectionItem);
 
+    T findById(Integer studentId, Integer courseId);
+    
     List<T> list();
 
     void saveToJson(String path) throws Exception;

@@ -2,16 +2,14 @@ package it.university.service;
 
 import java.util.List;
 
-import it.university.model.Item;
-
-// T extends Item --> TYPE SAFETY
-public interface IService<T extends Item> {
+// T extends Item --> TYPE SAFETY || NON IMPLEMENTATO PER ESTENDERE ANCHE CLASSROOM
+public interface IService<T, ID> {
 
     void save(T entity);
 
-    T getById(int id);
+    T findById(ID id);
 
     List<T> list();
 
-    void saveToJson(String path) throws Exception;
+    void saveToJson(String path);
 }

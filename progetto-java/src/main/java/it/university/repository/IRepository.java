@@ -1,19 +1,19 @@
 package it.university.repository;
 
-import java.io.IOException;
 import java.util.List;
 
-import it.university.model.Item;
-
 // INTERFACCIA DESTINATA AI REPOSITORY DEI SINGOLI OGGETTI CON ID UNIVOCO
-// T extends Item --> TYPE SAFETY
-public interface IRepository<T extends Item> {
+// T extends Item --> TYPE SAFETY || NON IMPLEMENTATO PER ESTENDERE ANCHE CLASSROOM
+public interface IRepository<T, ID> {
 
     void save(T var);
+    
+    boolean exists(ID id);
 
-    T findById(int id);
+    T findById(ID id);
 
     List<T> findAll();
 
-    void saveToJson(String filePath) throws IOException;
+    void saveToJson(String filePath);
+
 }

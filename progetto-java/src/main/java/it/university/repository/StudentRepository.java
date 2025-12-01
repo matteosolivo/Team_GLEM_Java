@@ -2,10 +2,10 @@ package it.university.repository;
 
 import it.university.model.Student;
 
-public class StudentRepository extends AbstractRepository<Student> {
+public class StudentRepository extends AbstractRepository<Student, Integer> {
 
     @Override
-    public int getItemId(Student student) {
+    public Integer getItemId(Student student) {
         return student.getId();
     }
 }

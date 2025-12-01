@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import it.university.exceptions.Exceptions;
+import it.university.exceptions.Exceptions.DuplicateException;
 import it.university.model.CollectionItem;
 
 // CLASSE ASTRATTA DESTINATA AI REPOSITORY CHE HANNO COMBINAZIONE DI ID COME CHIAVE PRIMARIA
@@ -18,12 +20,24 @@ public abstract class AbstractCollectionRepository<T extends CollectionItem> imp
     protected abstract String getItemId(T item);
 
     @Override
-    public void save(T item) {
-        if (findById(item.getStudentId(), item.getCourseId()) != null) {
-            System.out.println("Elemento duplicato: " + getItemId(item)); // ECCEZIONE ????
-            return;
+    public boolean exists(Integer studentId, Integer courseId) {
+        for (T item : collectionRepository) {
+            if (item.getStudentId().equals(studentId) && item.getCourseId().equals(courseId)) {
+                return true;
+            }
         }
+        return false;
+    }
 
+    @Override
+    public void save(T item) {
+        // INTEGER E' UNA CLASSE WRAPPER, QUINDI PUO ESSERE NULL
+        Integer studentId = item.getStudentId();
+        Integer courseId = item.getCourseId();
+
+        if (exists(studentId, courseId)) {
+            throw new DuplicateException("Elemento con studentId: " + studentId + " e courseId: " + courseId + " già presente.");
+        }
         collectionRepository.add(item);
     }
 
@@ -34,7 +48,7 @@ public abstract class AbstractCollectionRepository<T extends CollectionItem> imp
                 return item;
             }
         }
-        return null; // non trovato
+        throw new Exceptions.ItemNotFoundException("Elemento non trovato con studentId: " + studentId + " e courseId: " + courseId);
     }
 
     @Override
@@ -53,8 +67,12 @@ public abstract class AbstractCollectionRepository<T extends CollectionItem> imp
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(file, findAll());
-        System.out.println("Dati salvati correttamente in: " + file.getAbsolutePath());
+        try {
+            mapper.writeValue(file, findAll());
+            System.out.println("Dati salvati correttamente in: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            throw new Exceptions.FileSaveException("Errore durante il salvataggio JSON in: " + file.getAbsolutePath(), e);
+        }
     }
 
 }

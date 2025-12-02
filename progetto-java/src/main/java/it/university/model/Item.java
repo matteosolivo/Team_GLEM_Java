@@ -1,5 +1,6 @@
 package it.university.model;
 
+// CLASSE ASTRATTA PER RAPPRESENTARE GLI OGGETTI CON ATTRIBUTI IN COMUNE (id E name)
 public abstract class Item {
 
     protected int id;

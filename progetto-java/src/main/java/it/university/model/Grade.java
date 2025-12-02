@@ -1,6 +1,6 @@
 package it.university.model;
 
-public class Grade extends CollectionItem {
+public class Grade extends CombinationItem {
 
     private int value;
 
@@ -19,6 +19,7 @@ public class Grade extends CollectionItem {
         this.value = value;
     }
 
+    // METODO TO STRING SOVRASCRITTO DELLA CLASSE PADRE (ASTRATTA)
     @Override
     public String toString() {
         return "Grade{student=" + studentId + ", course=" + courseId + ", value=" + value + "}";

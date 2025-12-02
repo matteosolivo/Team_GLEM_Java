@@ -2,6 +2,13 @@ package it.university.exceptions;
 
 public class Exceptions {
 
+    // ECCEZIONE PER ARGOMENTO NON VALIDO
+    public static class IllegalArgumentException extends RuntimeException {
+        public IllegalArgumentException(String errore) {
+            super(errore);
+        }
+    }
+
     // ECCEZIONE PER OGGETTO DUPLICATO
     public static class DuplicateException extends RuntimeException {
         public DuplicateException(String errore) {

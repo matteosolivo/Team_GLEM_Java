@@ -10,7 +10,7 @@ import it.university.repository.ClassroomRepository;
 import it.university.repository.CourseRepository;
 import it.university.repository.EnrollmentRepository;
 import it.university.repository.GradeRepository;
-import it.university.repository.ICollectionRepository;
+import it.university.repository.ICombinationRepository;
 import it.university.repository.IRepository;
 import it.university.repository.ProfessorRepository;
 import it.university.repository.StudentRepository;
@@ -24,13 +24,16 @@ import it.university.service.StudentService;
 public class MainApp {
     public static void main(String[] args) throws Exception {
 
+        // INIZIALIZZAZIONE REPOSITORY TRAMITE INTERFACCIA PER UNA MAGGIORE ASTRAZIONE
         IRepository<Student, Integer> studentRepository = new StudentRepository();
         IRepository<Professor, Integer> professorRepository = new ProfessorRepository();
         IRepository<Course, Integer> courseRepository = new CourseRepository();
         IRepository<Classroom, String> classroomRepository = new ClassroomRepository();
-        ICollectionRepository<Enrollment> enrollmentRepository = new EnrollmentRepository();
-        ICollectionRepository<Grade> gradeRepository = new GradeRepository();
+        ICombinationRepository<Enrollment> enrollmentRepository = new EnrollmentRepository();
+        ICombinationRepository<Grade> gradeRepository = new GradeRepository();
         
+        // INIZIALIZZAZIONE SERVICE TRAMITE SINGLETON PATTERN
+        // MA NON TRAMITE INTERFACCIA POICHE' RAPPREESENTA LOGICA E NON IMPLEMENTAZIONE
         StudentService studentService = StudentService.getIstance(studentRepository);
         ProfessorService professorService = ProfessorService.getIstance(professorRepository);
         CourseService courseService = CourseService.getIstance(courseRepository);
@@ -71,8 +74,11 @@ public class MainApp {
         System.out.println("\nAule:");
         classroomService.list().forEach(System.out::println);
 
-        classroomService.save(new Classroom("A101", 30));
-
+        // save() --> registerClassroom() per gestire l'eccezione (IllegalArgumentException)
+        // NON POSSIAMO RICHIAMARE IL COSTRUTTORE POICHE' SOLLEVEREBBE L'ECCEZIONE SENZA CATTURARLA QUINDI PASSIAMO I PARAMETRI
+        // classroomService.save(new Classroom("A101", 30)) --> riga di origine
+        classroomService.registerClassroom("A101", 30);
+        
         System.out.println("\nAule:");
         classroomService.list().forEach(System.out::println);
 

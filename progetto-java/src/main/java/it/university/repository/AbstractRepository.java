@@ -15,8 +15,10 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
 
     protected final List<T> repository = new ArrayList<>();
 
+    // METODO ASTRATTO PER OTTENERE L'ID DELL'ELEMENTO, DA IMPLEMENTARE NELLE SOTTOCLASSI
     protected abstract ID getItemId(T item);
 
+    // VERIFICA SE ESISTE UN ELEMENTO CON L'ID FORNITO
     @Override
     public boolean exists(ID id) {
         for (T item : repository) {
@@ -27,6 +29,7 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
         return false;
     }
     
+    // SALVA UN NUOVO ELEMENTO NEL REPOSITORY E EFFETTUA IL CONTROLLO SUI DUPLICATI
     @Override
     public void save(T item) {
         ID id = getItemId(item);
@@ -37,6 +40,7 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
         repository.add(item);
     }
 
+    // RICERCA UN ELEMENTO IN BASE ALL'ID FORNITO
     @Override
     public T findById(ID id) {
         for (T item : repository) {
@@ -47,11 +51,13 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
         throw new Exceptions.ItemNotFoundException("Elemento non trovato con id: " + id);
     }
 
+    // RESTITUISCE TUTTI GLI ELEMENTI DEL REPOSITORY
     @Override
     public List<T> findAll() {
         return new ArrayList<>(repository);
     }
 
+    // SALVA TUTTI GLI ELEMENTI DI UN TIPO IN UN FILE JSON
     @Override
     public void saveToJson(String filePath) {
         File file = new File(filePath);

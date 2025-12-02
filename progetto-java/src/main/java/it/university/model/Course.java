@@ -28,6 +28,7 @@ public class Course extends Item {
         this.professorId = professorId;
     }
 
+    // METODO TO STRING SOVRASCRITTO DELLA CLASSE PADRE (ASTRATTA)
     @Override
     public String toString() {
         return "Course{" + id + ", " + name + ", " + credits + " CFU, prof=" + professorId + "}";

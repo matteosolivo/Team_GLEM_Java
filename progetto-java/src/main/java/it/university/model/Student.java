@@ -19,6 +19,7 @@ public class Student extends Item {
         this.email = email;
     }
 
+    // METODO TO STRING SOVRASCRITTO DELLA CLASSE PADRE (ASTRATTA)
     @Override
     public String toString() {
         return "Student{" + id + ", " + name + ", " + email + "}";

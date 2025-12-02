@@ -7,6 +7,7 @@ import it.university.exceptions.Exceptions.FileSaveException;
 import it.university.exceptions.Exceptions.ItemNotFoundException;
 import it.university.repository.IRepository;
 
+// CLASSE ASTRATTA DESTINATA AI SERVICES DEI SINGOLI OGGETTI CON ID UNIVOCO
 // T extends Item --> TYPE SAFETY || NON IMPLEMENTATO PER ESTENDERE ANCHE CLASSROOM
 public abstract class AbstractService<T, ID> implements IService<T, ID> {
 
@@ -16,6 +17,7 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
         this.repository = repository;
     }
 
+    // METODO PER AGGIUNGERE UN NUOVO ELEMENTO CON ID UNIVOCO
     @Override
     public void save(T item) {
         try {
@@ -25,6 +27,7 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
         }
     }
 
+    // RICERCA UN ELEMENTO IN BASE ALL'ID FORNITO
     @Override
     public T findById(ID id) {
         try {
@@ -35,11 +38,13 @@ public abstract class AbstractService<T, ID> implements IService<T, ID> {
         }
     }
 
+    // RESTITUISCE TUTTI GLI ELEMENTI DEL REPOSITORY
     @Override
     public List<T> list() {
         return repository.findAll();
     }
 
+    // SALVA TUTTI GLI ELEMENTI DI UN TIPO IN UN FILE JSON
     @Override
     public void saveToJson(String path) {
         try {

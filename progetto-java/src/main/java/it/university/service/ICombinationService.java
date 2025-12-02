@@ -2,12 +2,12 @@ package it.university.service;
 
 import java.util.List;
 
-import it.university.model.CollectionItem;
+import it.university.model.CombinationItem;
 
-// T extends CollectionItem --> TYPE SAFETY
-public interface ICollectionService<T extends CollectionItem> {
+// T extends CombinationItem --> TYPE SAFETY
+public interface ICombinationService<T extends CombinationItem> {
 
-    void add(T collectionItem);
+    void add(T combinationItem);
 
     T findById(Integer studentId, Integer courseId);
     

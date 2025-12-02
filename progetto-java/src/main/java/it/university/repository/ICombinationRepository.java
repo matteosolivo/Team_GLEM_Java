@@ -2,11 +2,11 @@ package it.university.repository;
 
 import java.util.List;
 
-import it.university.model.CollectionItem;
+import it.university.model.CombinationItem;
 
 // INTERFACCIA DESTINATA AI REPOSITORY CHE HANNO COMBINAZIONE DI ID COME CHIAVE PRIMARIA
-// T extends CollectionItem --> TYPE SAFETY
-public interface ICollectionRepository<T extends CollectionItem> {
+// T extends CombinationItem --> TYPE SAFETY
+public interface ICombinationRepository<T extends CombinationItem> {
 
     void save(T var);
     

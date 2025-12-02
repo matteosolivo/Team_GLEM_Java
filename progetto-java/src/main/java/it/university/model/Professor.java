@@ -19,6 +19,7 @@ public class Professor extends Item {
         this.department = department;
     }
 
+    // METODO TO STRING SOVRASCRITTO DELLA CLASSE PADRE (ASTRATTA)
     @Override
     public String toString() {
         return "Professor{" + id + ", " + name + ", dept=" + department + "}";

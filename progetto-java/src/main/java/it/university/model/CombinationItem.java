@@ -1,11 +1,12 @@
 package it.university.model;
 
-public abstract class CollectionItem {
+// CLASSE ASTRATTA PER RAPPRESENTARE GLI OGGETTI CHE COMBINANO DUE ID (studenteId E corsoId)
+public abstract class CombinationItem {
 
     protected Integer studentId;
     protected Integer courseId;
 
-    public CollectionItem(Integer studentId, Integer courseId) {
+    public CombinationItem(Integer studentId, Integer courseId) {
         this.studentId = studentId;
         this.courseId = courseId;
     }

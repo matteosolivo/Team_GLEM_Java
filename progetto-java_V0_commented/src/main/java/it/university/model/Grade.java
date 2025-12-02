@@ -11,10 +11,12 @@ public class Grade {
         this.value = value;
     }
 
+    //GETTERS
     public int getStudentId() { return studentId; }
     public int getCourseId() { return courseId; }
     public int getValue() { return value; }
 
+    //METODO TOSTRING RIDEFINITO
     @Override
     public String toString() {
         return "Grade{student=" + studentId + ", course=" + courseId + ", value=" + value + "}";

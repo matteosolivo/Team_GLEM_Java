@@ -15,12 +15,18 @@ import it.university.service.StudentService;
 
 public class MainApp {
     public static void main(String[] args) {
+
+        //Inizializzazione dei singoli Service
         StudentService studentService = new StudentService();
         ProfessorService professorService = new ProfessorService();
         CourseService courseService = new CourseService();
         ClassroomService classroomService = new ClassroomService();
         EnrollmentService enrollmentService = new EnrollmentService();
         GradeService gradeService = new GradeService();
+
+        /*In questa parte, utilizzando i rispettivi service, viene fatta una prima
+        stampa di ogni repository, vengono inseriti uno o più oggetti nel repository
+        e viene rifatta la stampa una volta finito l'inserimento*/
         
         System.out.println("Studenti:");
         studentService.list().forEach(System.out::println);
@@ -46,6 +52,7 @@ public class MainApp {
 
         courseService.createCourse(new Course(1, "Programmazione", 9));
         courseService.createCourse(new Course(2, "Basi di Dati", 6));
+        //Oltre all'inserimento nel repository dei corsi, viene anche assegnato al corso con indice 0 nel repository dei corsi il professore con id 1
         courseService.assignProfessor(courseService.list().get(0), 1);
 
         System.out.println("\nCorsi:");

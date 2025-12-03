@@ -34,7 +34,7 @@ Per la presentazione si lascia libera scelta sugli strumenti da utilizzare, a pa
 ***
 
 #### SCELTE IMPLEMENTATIVE
-##### Abbiamo scelto di revisionare il codice adottando le seguenti scelte implementative per presentare un migliore prodotto. Più elegante, dinamico e manutenibile.
+##### La revisione del codice ha consistito nell'adottare le seguenti scelte implementative per presentare un migliore prodotto, più elegante, dinamico e manutenibile.
 1. **Introduzione delle Classi Astratte**</br>Abbiamo deciso di introdurla per centralizzare la logica comune evitando di duplicare il codice e, allo stesso tempo, obbligare le sottoclassi ad implementare i metodi che necessitano di maggiori specifiche legate al tipo specifico degli oggetti. Lavorano spesso in parallelo, con le interfacce.
 
 2. **Introduzione delle Interfacce**</br>Introdurre l'utilizzo di interfacce nel proprio codice permette di definire un "contratto", ovvero definire quello che una classe, che implementa una determinata interfaccia, debba avere in termini di metodi. Questa scelta aumenta la modularita del codice, permettendo un aggiunta (tipo plug-n-play) di altre classi che implementano la stessa interfaccia.
@@ -47,4 +47,4 @@ Per la presentazione si lascia libera scelta sugli strumenti da utilizzare, a pa
 
 6. **Aggiunta del pattern Singleton**</br>Questa tecnica è molto efficace per evitare molteplici istanze dei services, ognuno collegato alla propria entità di riferimento. In questo modo evitiamo di avere più liste che contengono lo stesso tipo di dato minimizzando l'inconsistenza dei dati.
 
-7. **Salvataggio dei dati in un file JSON**</br>Questa implementazione è una *feature* aggiuntiva, scelta per garantire la persistenza dei dati anche al di fuori dell'esecuzione del programma (runtime). I dati sono organizzasi secondo il formato standard JSON (JavaScript Oject Notation). Ogni repository scrive in un file dedicato quindi alla fine del processo avremo tanti file quanti sono i repository che immagazzinano gli InMemoryData.
+7. **Salvataggio dei dati in un file JSON**</br>Questa implementazione è una *feature* aggiuntiva, scelta per garantire la persistenza dei dati anche al di fuori dell'esecuzione del programma (runtime). I dati sono organizzasi secondo il formato standard JSON (JavaScript Object Notation). Ogni repository scrive in un file dedicato quindi alla fine del processo avremo tanti file quanti sono i repository che immagazzinano gli InMemoryData.

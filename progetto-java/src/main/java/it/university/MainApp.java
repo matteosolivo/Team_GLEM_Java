@@ -33,7 +33,7 @@ public class MainApp {
         ICombinationRepository<Grade> gradeRepository = new GradeRepository();
         
         // INIZIALIZZAZIONE SERVICE TRAMITE SINGLETON PATTERN
-        // MA NON TRAMITE INTERFACCIA POICHE' RAPPREESENTA LOGICA E NON IMPLEMENTAZIONE
+        // MA NON TRAMITE INTERFACCIA POICHE' RAPPRESENTA LOGICA E NON IMPLEMENTAZIONE
         StudentService studentService = StudentService.getIstance(studentRepository);
         ProfessorService professorService = ProfessorService.getIstance(professorRepository);
         CourseService courseService = CourseService.getIstance(courseRepository);

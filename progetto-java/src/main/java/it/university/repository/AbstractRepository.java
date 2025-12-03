@@ -70,7 +70,7 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(file, findAll());
+            mapper.writeValue(file, repository);
             System.out.println("Dati salvati correttamente in: " + file.getAbsolutePath());
         } catch (IOException e) {
             throw new Exceptions.FileSaveException("Errore durante il salvataggio JSON in: " + file.getAbsolutePath(), e);

@@ -74,7 +74,7 @@ public abstract class AbstractCombinationRepository<T extends CombinationItem> i
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(file, findAll());
+            mapper.writeValue(file, combinationRepository);
             System.out.println("Dati salvati correttamente in: " + file.getAbsolutePath());
         } catch (IOException e) {
             throw new Exceptions.FileSaveException("Errore durante il salvataggio JSON in: " + file.getAbsolutePath(), e);

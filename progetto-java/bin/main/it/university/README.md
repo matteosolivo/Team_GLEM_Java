@@ -13,6 +13,14 @@ Per la presentazione si lascia libera scelta sugli strumenti da utilizzare, a pa
 
 ***
 
+#### INTRODUZIONE
+Per il seguente progetto, il nostro gruppo ha decido di adottare **Git** e **GitHub** come strumenti complementari di sviluppo.
+* Git, in quanto definito sistema di version control, ci ha permesso di lavorare in parallelo e allo stesso tempo tener traccia dei cambiamenti che apportavamo al nostro progetto.
+* GitHub, invece, attraverso la sua interfaccia grafica ci ha permesso di visualizzare lo stato del codice e dei branch in cui ognuno di noi lavorava quindi monitorare l'avanzamento delle task.
+> https://github.com/matteosolivo/Team_GLEM_Java
+
+***
+
 #### STRUTTURA
 
 1. **Classi Astratte per Models:** Eliminare codice duplicato, semplificare la manutenzione e modifica delle classi
